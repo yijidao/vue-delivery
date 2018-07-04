@@ -13,7 +13,7 @@
       </div>
     </div>
     <div class="contents">
-      <router-view></router-view>
+      <router-view :seller="seller"></router-view>
     </div>
   </div>
 </template>
@@ -35,7 +35,6 @@ export default {
       response = response.body;
       if (response.errno === ERR_OK) {
         this.seller = response.data;
-        console.log(this.seller);
       }
     });
   },
@@ -65,7 +64,5 @@ export default {
           color : rgb(77, 85, 93)
           &.active
             color : rgb(240, 20, 20)
-    .contents
-      width : 100%
-      height : 600px
+
 </style>

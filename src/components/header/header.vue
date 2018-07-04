@@ -283,7 +283,7 @@ export default {
                 font-size: 12px
           .bulletin
             width: 80%
-            margin: 0 auto 
+            margin: 0 auto
             .content
               padding: 0 12px
               line-height: 24px
