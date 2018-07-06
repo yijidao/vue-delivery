@@ -117,7 +117,7 @@ export default {
       this.$emit('cart-add', this.$refs.cartcontrolWrapper);
     },
     needShow(type, text) {
-      debugger;
+      // debugger;
       if (this.onlyContent && !text) {
         return false;
       }
