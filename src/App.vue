@@ -13,13 +13,16 @@
       </div>
     </div>
     <div class="contents">
-      <router-view :seller="seller"></router-view>
+      <keep-alive>
+        <router-view :seller="seller"></router-view>
+      </keep-alive>
     </div>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
 import header from './components/header/header';
+import {urlParse} from '@/common/js/util';
 
 const ERR_OK = 0;
 
@@ -27,14 +30,22 @@ export default {
   name: 'App',
   data() {
     return {
-      seller: {}
+      seller: {
+        id: (() => {
+          let queryParam = urlParse();
+          // console.log(queryParam);
+          return queryParam.id;
+        })()
+      }
     };
   },
   created() {
-    this.$http.get('/api/seller').then((response) => {
+    this.$http.get('/api/seller?id=' + this.seller.id).then((response) => {
       response = response.body;
       if (response.errno === ERR_OK) {
-        this.seller = response.data;
+        // this.seller = response.data;
+        this.seller = Object.assign({}, this.seller, response.data);
+        // console.log(this.seller.id);
       }
     });
   },
